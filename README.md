@@ -32,20 +32,20 @@ roslaunch vehicle_assembly_moveit full_sim.launch
 ```
 In another terminal :
 ```
-cd <your ROS_WS>/src/vehicle_assembly/scripts
+cd <your ROS_ws>/src/vehicle_assembly/scripts
 python3 moveit.py
 ```
 
-### BEFORE RUNNING SNY VSLIDATION:
+### BEFORE RUNNING ANY VALIDATION:
 ```
 cd <your ROS_ws>/src/vehcile_assembly/urdf
 ```
 - Open vehicle_assembly.urdf and comment from line  2734 to 2821 and uncomment lines 2823 to 2910
 
 ```
-cd <your ROS_ws>/src/vehcile_assembly/launch
+cd <your ROS_ws>/src/vehicle_assembly/launch
 
-### Open vehicle_assembly.launch and uncomment from line 39 to 50 and comment lines 30 to 40
+- Open vehicle_assembly.launch and uncomment from line 39 to 50 and comment lines 30 to 40
 
 ### RUN FORWARD KINEMATICS VALIDATION:
 ```
