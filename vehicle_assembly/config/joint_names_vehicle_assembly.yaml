@@ -1,0 +1,69 @@
+controller_joint_names: ['', 'front_right_wheel_joint',  'rear_right_wheel_joint', 'rear_left_wheel_joint', 'front_left_wheel_joint',  'ur3_joint_1', 'ur3_joint_2', 'ur3_joint_5', 'ur3_joint_8', 'ur3_joint_9', 'ee_joint', 'ee_left_joint', 'ee_right_joint', ]
+
+# default controller
+joint_state_controller:
+  type: joint_state_controller/JointStateController
+  publish_rate: 50
+
+##################### WHEEL CONTROLLERS ################
+front_right_wheel_joint_controller:
+  type: velocity_controllers/JointVelocityController 
+  joint: "front_right_wheel_joint"
+  pid : {p: 10.0, i: 0.01, d: 1.0}
+
+rear_right_wheel_joint_controller:
+  type: velocity_controllers/JointVelocityController 
+  joint: "rear_right_wheel_joint"
+  pid : {p: 10.0, i: 0.01, d: 1.0} 
+
+rear_left_wheel_joint_controller:
+  type: velocity_controllers/JointVelocityController 
+  joint: "rear_left_wheel_joint"
+  pid : {p: 10.0, i: 0.01, d: 1.0}
+
+front_left_wheel_joint_controller:
+  type: velocity_controllers/JointVelocityController 
+  joint: "front_left_wheel_joint"
+  pid : {p: 10.0, i: 0.01, d: 1.0}
+
+##################### ARM CONTROLLERS ##################
+ur3_joint_1_controller:
+  type: effort_controllers/JointPositionController 
+  joint: "ur3_joint_1"
+  pid : {p: 10.0, i: 0.01, d: 1.0}
+
+ur3_joint_2_controller:
+  type: effort_controllers/JointPositionController 
+  joint: "ur3_joint_2"
+  pid : {p: 10.0, i: 0.01, d: 1.0}
+
+ur3_joint_5_controller:
+  type: effort_controllers/JointPositionController 
+  joint: "ur3_joint_5"
+  pid : {p: 10.0, i: 0.01, d: 1.0}
+
+ur3_joint_8_controller:
+  type: effort_controllers/JointPositionController 
+  joint: "ur3_joint_8"
+  pid : {p: 10.0, i: 0.01, d: 1.0}
+
+ur3_joint_9_controller:
+  type: effort_controllers/JointPositionController 
+  joint: "ur3_joint_9"
+  pid : {p: 10.0, i: 0.01, d: 1.0}
+
+ee_joint_controller:
+  type: effort_controllers/JointPositionController 
+  joint: "ee_joint"
+  pid : {p: 10.0, i: 0.01, d: 1.0}
+
+ee_left_joint_controller:
+  type: effort_controllers/JointPositionController 
+  joint: "ee_left_joint"
+  pid : {p: 10.0, i: 0.01, d: 1.0}
+
+ee_right_joint_controller:
+  type: effort_controllers/JointPositionController 
+  joint: "ee_right_joint"
+  pid : {p: 10.0, i: 0.01, d: 1.0}
+

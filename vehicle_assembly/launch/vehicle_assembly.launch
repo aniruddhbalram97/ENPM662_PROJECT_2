@@ -1,0 +1,59 @@
+<launch>
+<!--Urdf file path-->
+<param name="robot_description" textfile="$(find vehicle_assembly)/urdf/vehicle_assembly.urdf"/>
+<!--spawn a empty gazebo world-->
+<include file="$(find gazebo_ros)/launch/empty_world.launch" >
+  <arg name="world_name" value="$(find vehicle_assembly)/world/obj.world"/>
+</include>
+
+<node name="tf_footprint_base" pkg="tf" type="static_transform_publisher" args="0 0 0 0 0 0
+base_link base_footprint 40" />
+<!--spawn model-->
+  <node
+    name="spawn_model"
+    pkg="gazebo_ros"
+    type="spawn_model"
+    args="-file $(find vehicle_assembly)/urdf/vehicle_assembly.urdf -urdf -model vehicle_assembly"
+    output="screen" />
+
+    
+
+
+  <!-- <node
+    name="spawn_model"
+    pkg="gazebo_ros"
+    type="spawn_model"
+    args="-file $(find vehicle_assembly)/urdf/vehicle_assembly.urdf -urdf -model mobile_robot_configuration -x $(arg x_pos) -y $(arg y_pos) -z $(arg z_pos)"
+    output="screen" /> -->
+
+<!--Load and launch the joint trajectory controller-->
+<rosparam file ="$(find vehicle_assembly)/config/joint_group_controllers.yaml"
+command="load"/> 
+
+<node name= "controller_spawner" pkg= "controller_manager" type="spawner" respawn="false" 
+output="screen" args="joint_state_controller front_right_wheel_joint_controller
+                                                        rear_right_wheel_joint_controller
+                                                        rear_left_wheel_joint_controller
+                                                        front_left_wheel_joint_controller robot_arm_controller hand_ee_controller"/>
+<!-- FOR VALIDATION-->
+<!-- <rosparam file ="$(find vehicle_assembly)/config/joint_names_vehicle_assembly.yaml"
+command="load"/> 
+
+load the controllers
+<node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+output="screen" args=" joint_state_controller front_right_wheel_joint_controller
+                                                        rear_right_wheel_joint_controller
+                                                        rear_left_wheel_joint_controller
+                                                        front_left_wheel_joint_controller
+                                                        ur3_joint_1_controller ur3_joint_2_controller ur3_joint_5_controller ur3_joint_8_controller ur3_joint_9_controller ee_joint_controller
+                                                        ee_left_joint_controller ee_right_joint_controller
+                                                        "/>  -->
+
+
+
+
+<!-- Robot State Publisher for TF of each joint: publishes all the current states of the joint, then RViz
+can visualize -->
+<node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"
+respawn="false" output="screen"/>
+</launch>

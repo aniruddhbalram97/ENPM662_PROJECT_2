@@ -1,0 +1,52 @@
+<launch>
+  <include
+    file="$(find gazebo_ros)/launch/empty_world.launch" />
+
+  <arg name="x_pos" default="5.0"/>
+  <arg name="y_pos" default="5.0"/>
+  <arg name="z_pos" default="0.0"/>
+
+  <param name="robot_description" textfile="$(find vehicle_assembly)/urdf/vehicle_assembly.urdf"/>
+
+  <!-- Load joint controller configurations from YAML file to parameter server -->
+  <rosparam file="$(find vehicle_assembly)/config/joint_names_vehicle_assembly.yaml" command="load"/>
+  <rosparam file="$(find vehicle_assembly)/config/joint_group_controllers.yaml" command="load"/>
+  <!-- Node for publishing base footprint -->
+	<node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+        <param name="use_gui" value="False"/>
+  </node>
+
+ <!-- load the controllers -->
+  <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+    output="screen" args=" joint_state_controller front_right_wheel_joint_controller
+                                                            rear_right_wheel_joint_controller
+                                                            rear_left_wheel_joint_controller
+                                                            front_left_wheel_joint_controller
+                                                            ur3_joint_1_controller ur3_joint_2_controller ur3_joint_5_controller ur3_joint_8_controller ur3_joint_9_controller ee_joint_controller
+                                                            ee_left_joint_controller ee_right_joint_controller
+                                                            "/>
+                                              
+
+  <!-- convert joint states to TF transforms for rviz, etc -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"
+    respawn="false" output="screen"/>  
+
+  <node
+    name="tf_footprint_base"
+    pkg="tf"
+    type="static_transform_publisher"
+    args="0 0 0 0 0 0 base_link base_footprint 40" />
+  
+  <node
+    name="spawn_model"
+    pkg="gazebo_ros"
+    type="spawn_model"
+    args="-file $(find vehicle_assembly)/urdf/vehicle_assembly.urdf -urdf -model vehicle_assembly"
+    output="screen" />
+
+  <node
+    name="fake_joint_calibration"
+    pkg="rostopic"
+    type="rostopic"
+    args="pub /calibrated std_msgs/Bool true" />
+</launch>

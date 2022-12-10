@@ -1,0 +1,2 @@
+controller_list:
+  [robot_arm_controller, hand_ee_controller, ]

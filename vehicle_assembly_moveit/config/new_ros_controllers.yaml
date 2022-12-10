@@ -1,0 +1,19 @@
+controller_list:
+  - name: robot_arm_controller
+    action_ns: follow_joint_trajectory
+    type: FollowJointTrajectory
+    default: true
+    joints:
+    - ur3_joint_1
+    - ur3_joint_2
+    - ur3_joint_5
+    - ur3_joint_8
+    - ur3_joint_9
+    - ee_joint
+
+  - name: hand_ee_controller
+    action_ns: follow_joint_trajectory
+    type: FollowJointTrajectory
+    joints:
+    - ee_left_joint
+    - ee_right_joint

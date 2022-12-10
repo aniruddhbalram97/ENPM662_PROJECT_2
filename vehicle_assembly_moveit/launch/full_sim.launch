@@ -1,0 +1,16 @@
+<launch>
+<!-- Launch Your robot arms launch file which loads the robot in Gazebo and spawns the
+controllers -->
+<include file = "$(find vehicle_assembly)/launch/vehicle_assembly.launch" />
+<!-- Launch Moveit Move Group Node -->
+<include file = "$(find vehicle_assembly_moveit)/launch/move_group.launch" />
+<!-- Run Rviz and load the default configuration to see the state of the move_group node -->
+<arg name="use_rviz" default="true" />
+<include file="$(find vehicle_assembly_moveit)/launch/moveit_rviz.launch" if="$(arg
+use_rviz)">
+<arg name="rviz_config" value="$(find vehicle_assembly_moveit)/launch/moveit.rviz"/>
+</include>
+<!-- <node pkg="moveit_ros_move_group" type="move_group" name="remap_joint_states" output="screen">
+  <remap from="joint_states" to="robot/joint_states"/>
+</node> -->
+</launch>

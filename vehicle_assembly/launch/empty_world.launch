@@ -1,0 +1,12 @@
+<launch>
+
+
+    <!--spawn a empty gazebo world-->
+    <include file="$(find gazebo_ros)/launch/empty_world.launch" >
+     <arg name="world_name" value="$(find vehicle_assembly)/world/obj.world"/>
+    </include>
+ 
+
+</launch>
+
+
