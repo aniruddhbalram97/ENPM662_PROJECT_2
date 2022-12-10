@@ -44,6 +44,7 @@ cd <your ROS_ws>/src/vehcile_assembly/urdf
 
 ```
 cd <your ROS_ws>/src/vehicle_assembly/launch
+```
 
 - Open vehicle_assembly.launch and uncomment from line 39 to 50 and comment lines 30 to 40
 
