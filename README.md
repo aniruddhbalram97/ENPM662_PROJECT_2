@@ -1,4 +1,4 @@
-### ENPM662-PROJECT2
+## ENPM662-PROJECT2
 
 ## DELIVERY ROBOT
 
@@ -17,7 +17,7 @@ The aim of this project is to build an omni directional mobile manipulator that 
 
 ## INSTRUCTIONS TO RUN THE ROS PACKAGE 
 
-# BUILD THE PACKAGE
+### BUILD THE PACKAGE
 
 Clone the repository to your workspace and build the packages:
 ```
