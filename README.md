@@ -68,6 +68,7 @@ cd <your ROS_WS>/src/vehicle_assembly/scripts
 python3 inK_validation.py
 ```
 ### RUN WORKSPACE STUDY VALIDATION:
+```
 roslaunch vehicle assembly vehicle_assembly.launch
 ```
 In another terminal :
