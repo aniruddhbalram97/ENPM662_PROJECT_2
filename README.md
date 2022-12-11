@@ -75,7 +75,6 @@ In another terminal :
 cd <your ROS_WS>/src/vehicle_assembly/scripts
 python3 workspace.py
 ```
-
 ### SIMULATION VIDEOS 
 - https://drive.google.com/file/d/1qItt6UyC16aCXbElswLgnpFnVTCxZOQI/view?usp=sharing
 
