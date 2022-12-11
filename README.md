@@ -12,6 +12,9 @@ The aim of this project is to build an omni directional mobile manipulator that 
 - Moveit
 - Gazebo
 
+## NOTE
+- In order to successfully run the simulation, we have used two plugins namely, gazebo-pkgs and general-message-pkgs. These files have also been added to the repository.
+
 ## INSTRUCTIONS TO RUN THE ROS PACKAGE 
 
 # BUILD THE PACKAGE
