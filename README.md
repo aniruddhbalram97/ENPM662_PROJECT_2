@@ -1,6 +1,9 @@
 ## ENPM662-PROJECT2
 
 ## DELIVERY ROBOT
+Project Partners:
+- Aniruddh Balram
+- Badrinarayanan Raghunathan Srikumar
 
 ## OVERVIEW
 The aim of this project is to build an omni directional mobile manipulator that can be used for delivery of groceries and food.
